@@ -138,6 +138,22 @@ export function SudokuImageImport({
     [handleFiles, recognizeFile]
   )
 
+  const recognizeSample = useCallback(async () => {
+    setState({ kind: "working", message: "正在载入样例图…" })
+    try {
+      const response = await fetch("/sample-sudoku.png")
+      if (!response.ok) throw new Error("无法载入样例图。")
+      const blob = await response.blob()
+      const file = new File([blob], "sample-sudoku.png", { type: "image/png" })
+      await recognizeFile(file)
+    } catch (error) {
+      setState({
+        kind: "error",
+        message: error instanceof Error ? error.message : "无法载入样例图。",
+      })
+    }
+  }, [recognizeFile])
+
   const busy = disabled || state.kind === "working"
 
   return (
@@ -243,6 +259,14 @@ export function SudokuImageImport({
           >
             <ClipboardPaste data-icon="inline-start" />
             粘贴图片
+          </Button>
+          <Button
+            type="button"
+            variant="ghost"
+            disabled={busy}
+            onClick={() => void recognizeSample()}
+          >
+            试用样例图
           </Button>
         </div>
 
