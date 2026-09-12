@@ -42,6 +42,8 @@ npm run deploy    # 构建并发布到 Workers
 - Deploy command: `npx opennextjs-cloudflare deploy`
 - Non-production deploy command: `npx opennextjs-cloudflare upload`
 
+`wrangler.jsonc` 里也配置了 `build.command`，这样即便 Dashboard 仍使用默认的 `npx wrangler deploy` / `npx wrangler versions upload`，也会先生成 `.open-next/worker.js`。
+
 ## 使用说明
 
 1. 在棋盘上填入题目中的已知数字，空位留空。

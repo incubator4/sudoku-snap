@@ -7,6 +7,11 @@
     "nodejs_compat",
     "global_fetch_strictly_public"
   ],
+  "build": {
+    // Workers Builds may run `wrangler deploy` / `versions upload` without an
+    // OpenNext step. Generate `.open-next/worker.js` first.
+    "command": "npx opennextjs-cloudflare build"
+  },
   "assets": {
     "directory": ".open-next/assets",
     "binding": "ASSETS"
