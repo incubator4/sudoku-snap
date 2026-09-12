@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "数独自动填写",
-  description: "手动输入已知数字，一键自动补全 9×9 数独。",
+  description: "手动输入、粘贴或拍照识别已知数字，一键自动补全 9×9 数独。",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
