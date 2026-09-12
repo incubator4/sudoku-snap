@@ -192,6 +192,9 @@ export function SudokuImageImport({
         <div
           role="button"
           tabIndex={0}
+          onClick={() => {
+            if (!busy) fileRef.current?.click()
+          }}
           onPaste={(event) => {
             if (event.clipboardData.files.length > 0) {
               event.preventDefault()
@@ -262,7 +265,7 @@ export function SudokuImageImport({
           </Button>
           <Button
             type="button"
-            variant="ghost"
+            variant="outline"
             disabled={busy}
             onClick={() => void recognizeSample()}
           >
