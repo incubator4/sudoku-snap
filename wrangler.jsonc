@@ -1,0 +1,33 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "sudoku-snap",
+  "main": ".open-next/worker.js",
+  "compatibility_date": "2026-09-12",
+  "compatibility_flags": [
+    "nodejs_compat",
+    "global_fetch_strictly_public"
+  ],
+  "assets": {
+    "directory": ".open-next/assets",
+    "binding": "ASSETS"
+  },
+  "services": [
+    {
+      // Self-reference used by OpenNext for ISR / revalidation.
+      "binding": "WORKER_SELF_REFERENCE",
+      "service": "sudoku-snap"
+    }
+  ],
+  "observability": {
+    "enabled": true
+  },
+  "preview_urls": true
+  // Optional: R2 incremental cache
+  // See https://opennext.js.org/cloudflare/caching
+  // "r2_buckets": [
+  //   {
+  //     "binding": "NEXT_INC_CACHE_R2_BUCKET",
+  //     "bucket_name": "sudoku-snap-opennext-cache"
+  //   }
+  // ]
+}

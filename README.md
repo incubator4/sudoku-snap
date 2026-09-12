@@ -25,6 +25,22 @@ npm run lint
 npm run build
 ```
 
+## 部署到 Cloudflare Workers
+
+本项目通过 [OpenNext](https://opennext.js.org/cloudflare) 部署到 Cloudflare Workers，不要用 Pages / `@cloudflare/next-on-pages`。
+
+```bash
+npx wrangler login
+npm run preview   # 本地用 Workers runtime 预览
+npm run deploy    # 构建并发布到 Workers
+```
+
+发布后会得到 `sudoku-snap.<account>.workers.dev`。也可以在 Cloudflare Dashboard 把仓库接到 **Workers Builds**：
+
+- Build command: `npx opennextjs-cloudflare build`
+- Deploy command: `npx opennextjs-cloudflare deploy`
+- Non-production deploy command: `npx opennextjs-cloudflare upload`
+
 ## 使用说明
 
 1. 在棋盘上填入题目中的已知数字，空位留空。
