@@ -11,6 +11,7 @@ import {
 } from "lucide-react"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
+import { SudokuImageImport } from "@/components/sudoku-image-import"
 import {
   Card,
   CardContent,
@@ -305,7 +306,7 @@ export function SudokuApp() {
                 数独自动填写
               </h1>
               <p className="text-base leading-7 text-stone-600">
-                在棋盘上点选格子，输入已知数字；也可以粘贴 81 个字符的题目。点
+                在棋盘上点选格子，输入已知数字；也可以粘贴题目，或上传、拍照识别数独图片。点
                 「自动填写」后，程序会用回溯算法补全剩余空格。
               </p>
             </div>
@@ -406,6 +407,11 @@ export function SudokuApp() {
           </section>
 
           <aside className="space-y-4">
+            <SudokuImageImport
+              disabled={isSolving}
+              onApply={(next, note) => applyPuzzle(next, { note })}
+            />
+
             <Card>
               <CardHeader>
                 <CardTitle>手动输入</CardTitle>
